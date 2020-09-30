@@ -1,0 +1,38 @@
+﻿Melopero RV_3028_C7 Arduino library
+
+import:
+	#include <MP_RV_3028.h>
+
+costruttore:
+	MP_RV_3028 device; (default)
+metodi:
+	uint8_t getSeconds()
+	uint8_t getMinutes()
+	uint8_t getHours()
+	uint8_t getWeekday()
+	uint8_t getDate()
+	uint8_t getMonth()
+	uint16_t getYear()
+	void set24HourMode()
+	void set12HourMode()
+	bool is12HourMode()
+	bool isPM()
+	void setTime(uint16_t year, uint8_t month, uint8_t weekday, uint8_t date, uint8_t hour, uint8_t minute, uint8_t second);
+
+	bool isDateModeForAlarm()
+	void setDateModeForAlarm(bool flag)
+	void setAlarm(uint8_t weekdayOrDate, uint8_t hour, uint8_t minute, bool dateAlarm = true, bool hourAlarm = true, bool minuteAlarm = true, bool generateInterrupt = true)
+        void disableAlarm();
+
+        void setPeriodicTimer(uint16_t amount, TimerClockFrequency freq, bool repeat = true, bool generateInterrupt = true)
+        void disablePeriodicTimer()
+
+	uint8_t readFromRegister(uint8_t registerAddress)
+        void writeToRegister(uint8_t registerAddress, uint8_t value)
+        void writeToRegisters(uint8_t startAddress, uint8_t *values, uint8_t length)
+
+        uint8_t BCDtoDEC(uint8_t bcd)
+        uint8_t DECtoBCD(uint8_t dec)
+
+        uint8_t to12HourFormat(uint8_t bcdHours)
+        uint8_t to24HourFormat(uint8_t bcdHours)

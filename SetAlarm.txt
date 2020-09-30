@@ -1,0 +1,9 @@
+1. Initialize bits AIE and AF to 0.
+2. Choose weekday alarm or date alarm (weekday/date) by setting the WADA bit. WADA = 0 for weekday
+alarm or WADA = 1 for date alarm.
+3. Write the desired alarm settings in registers 07h to 09h. The three alarm enable bits, AE_M, AE_H and
+AE_WD, are used to select the corresponding register that has to be taken into account for match or not.
+See the following table.
+4. Set CAIE bit to 1 to enable clock output when an alarm occurs. See also CLOCK OUTPUT SCHEME.
+̅̅̅̅̅ pin.
+5. Set the AIE bit to 1 if you want to get a hardware interrupt on
