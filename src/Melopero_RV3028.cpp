@@ -281,7 +281,7 @@ bool Melopero_RV3028::isEEPROMBusy(){
  * configuration eeprom address space : [0x30 - 0x37] */
 uint8_t Melopero_RV3028::readEEPROMRegister(uint8_t registerAddress){
     writeToRegister(EEPROM_ADDRESS_ADDRESS, registerAddress);
-    while (isEEPROMBusy());
+    //while (isEEPROMBusy());
 
     // read a register -> eeprom data = 0x22
     writeToRegister(EEPROM_COMMAND_ADDRESS, 0x22);
@@ -294,7 +294,7 @@ uint8_t Melopero_RV3028::readEEPROMRegister(uint8_t registerAddress){
 void Melopero_RV3028::writeEEPROMRegister(uint8_t registerAddress, uint8_t value){
     writeToRegister(EEPROM_ADDRESS_ADDRESS, registerAddress);
     writeToRegister(EEPROM_DATA_ADDRESS, value);
-    while (isEEPROMBusy());
+    //while (isEEPROMBusy());
 
     // write to a register in eeprom = 0x21
     writeToRegister(EEPROM_COMMAND_ADDRESS, 0x21);
