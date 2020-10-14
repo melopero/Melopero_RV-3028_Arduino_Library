@@ -1,0 +1,45 @@
+########################################################
+# Class
+###################################################################
+
+Melopero_RV3028	KEYWORD1
+
+###################################################################
+# Methods and Functions
+###################################################################
+
+getSeconds	KEYWORD2
+getMinutes	KEYWORD2
+getHours	KEYWORD2
+getWeekday	KEYWORD2
+getDate	KEYWORD2
+getMonth	KEYWORD2
+getYear	KEYWORD2
+set24HourMode	KEYWORD2
+set12HourMode	KEYWORD2
+is12HourMode	KEYWORD2
+isPM	KEYWORD2
+setTime	KEYWORD2
+isDateModeForAlarm	KEYWORD2
+setDateModeForAlarm	KEYWORD2
+setAlarm	KEYWORD2
+disableAlarm	KEYWORD2
+setPeriodicTimer	KEYWORD2
+disablePeriodicTimer	KEYWORD2
+enablePeriodicTimeUpdate    KEYWORD2
+clearInterruptFlags    KEYWORD2
+getUnixTime    KEYWORD2
+initDevice    KEYWORD2
+
+readFromRegister	KEYWORD2
+writeToRegister	KEYWORD2
+BCDtoDEC	KEYWORD2
+DECtoBCD	KEYWORD2
+to12HourFormat	KEYWORD2
+to24HourFormat	KEYWORD2
+andOrRegister	KEYWORD2
+useEEPROM	KEYWORD2
+isEEPROMBusy	KEYWORD2
+readEEPROMRegister	KEYWORD2
+writeEEPROMRegister	KEYWORD2
+
