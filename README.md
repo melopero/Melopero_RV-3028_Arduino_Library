@@ -1,6 +1,84 @@
-# Melopero_RV-3028_Arduino_Library
+# Melopero RV-3028 Arduino Library
+A library for interfacing the <b>Melopero RV-3028 Extreme Low Power RTC module breakout</b> with an Arduino board.
+<br> If you were looking for the Raspberry Pi Python3 library click [HERE](https://github.com/melopero/Melopero_RV-3028)
 
-This library provides an easy access to the RV3028 rtc functions.
+![melopero logo](images/Melopero-RV-3028-diagonal-2.jpg?raw=true)
+
+# Pinouts
+
+<table style="width:100%">
+  <tr>
+    <th>Melopero RV-3028</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>3V3</td>
+    <td>Input power pin. Apply 3.3V to this pin</td>
+  </tr>
+  <tr>
+    <td>SCL</td>
+    <td>I2C Serial CLock pin</td>
+  </tr>
+  <tr>
+    <td>SDA</td>
+    <td>I2C Serial DAta pin</td>
+  </tr>
+  <tr>
+    <td>GND</td>
+    <td>Ground pin</td>
+  </tr>
+  <tr>
+    <td>EVI</td>
+    <td>External Event Input(INPUT), pulled high (see schematics for more details)<br>(this pin is not supported in our library)</td>
+  </tr>
+  <tr>
+    <td>INT</td>
+    <td>Interrupt Output, active LOW, pulled-high (see schematics for more details) </td>
+  </tr>
+</table>
+
+
+## Getting Started
+### Prerequisites
+You will need:
+- Arduino IDE, you can download it here: [download](https://www.arduino.cc/en/main/software)
+- a Melopero RV-3028 breakout board: [buy here](https://www.melopero.com/shop/)
+
+### Connect the sensor to the Arduino
+You can find a description of the pins of your specific Arudino board on the official Arduino website[HERE](https://www.arduino.cc)
+<br>The RV-3028 communicates over I2C:
+<table style="width:100%">
+  <tr>
+    <th>Melopero RV-3028</th>
+    <th>Arduino</th> 
+  </tr>
+  <tr>
+    <td>3V3</td>
+    <td>3.3V</td> 
+  </tr>
+  <tr>
+    <td>SCL</td>
+    <td>SCL</td> 
+  </tr>
+  <tr>
+    <td>SDA</td>
+    <td>SDA</td> 
+  </tr>
+  <tr>
+    <td>GND</td>
+    <td>GND</td> 
+  </tr>
+  <tr>
+    <td>INT</td>
+    <td>any available Digital pin</td> 
+  </tr>
+</table>
+
+### Install the library
+This library can be installed directly from the Library manager of the Arduino IDE.
+<br>Open the Arduino IDE, select <b>Sketch-->Include Library-->Manage Libraries</b>.
+<br>Type "melopero rv3028", select the library and click on "Install".
+<br>The installation will include some examples, available under <b>File-->Examples-->Melopero RV3028</b>. 
 
 ## Usage
 
