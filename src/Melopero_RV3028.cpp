@@ -126,7 +126,7 @@ uint8_t Melopero_RV3028::getHour(){
 }
 
 bool Melopero_RV3028::isPM(){
-    return readFromRegister(HOURS_REGISTER_ADDRESS) & PM_FLAG > 0;
+    return (readFromRegister(HOURS_REGISTER_ADDRESS) & PM_FLAG) > 0;
 }
 
 uint8_t Melopero_RV3028::getWeekday(){
@@ -273,7 +273,7 @@ void Melopero_RV3028::useEEPROM(bool disableRefresh){
 }
 
 bool Melopero_RV3028::isEEPROMBusy(){
-    return readFromRegister(STATUS_REGISTER_ADDRESS) & 0x80 > 0;
+    return (readFromRegister(STATUS_REGISTER_ADDRESS) & 0x80) > 0;
 }
 
 /* Reads an eeprom register and returns its content.
