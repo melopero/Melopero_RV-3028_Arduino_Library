@@ -7,7 +7,11 @@ void setup() {
   while (!Serial);
   
   // First initialize and create the rtc device
-  rtc.initDevice();
+  Wire.begin();
+  rtc.initI2C();
+  // use the following to use Wire1 instead of Wire:
+  // Wire1.begin();
+  // rtc.initI2C(Wire1);
  
   // Set the device to use the 24hour format (default) instead of the 12 hour format
   rtc.set24HourMode();

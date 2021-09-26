@@ -57,10 +57,14 @@ enum TimerClockFrequency : uint8_t {
 
 class Melopero_RV3028 {
 
+    // instance attributes/members
+    public:
+        TwoWire *i2c;
+        
     //constructor and device initializer
     public:
         Melopero_RV3028();
-        void initDevice();
+        void initI2C(TwoWire &bus = Wire);
 
     //methods
     public:

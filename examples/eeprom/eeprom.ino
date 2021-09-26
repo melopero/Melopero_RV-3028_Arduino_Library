@@ -7,7 +7,9 @@ void setup() {
   while (!Serial);
   
   // First initialize and create the rtc device
-  rtc.initDevice();
+  Wire.begin();
+  rtc.initI2C();
+  
   // Setup the device to use the EEPROM memory
   rtc.useEEPROM();
  

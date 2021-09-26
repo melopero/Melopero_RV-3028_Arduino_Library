@@ -3,39 +3,39 @@
 Melopero_RV3028::Melopero_RV3028(){
 }
 
-void Melopero_RV3028::initDevice(){
-    Wire.begin();
+void Melopero_RV3028::initI2C(TwoWire &bus){
+    i2c = &bus;
 }
 
 uint8_t Melopero_RV3028::readFromRegister(uint8_t registerAddress){
-    Wire.beginTransmission(RV3028_ADDRESS);
+    i2c->beginTransmission(RV3028_ADDRESS);
 
     //set register pointer
-    Wire.write(registerAddress);
-    Wire.endTransmission();
+    i2c->write(registerAddress);
+    i2c->endTransmission();
 
-    Wire.requestFrom(RV3028_ADDRESS, 1);
-    //TODO: check if the byte is sent with Wire.available()
-    uint8_t result = Wire.read();
+    i2c->requestFrom(RV3028_ADDRESS, 1);
+    //TODO: check if the byte is sent with i2c->available()
+    uint8_t result = i2c->read();
     return result;
 }
 
 void Melopero_RV3028::writeToRegister(uint8_t registerAddress, uint8_t value){
-    Wire.beginTransmission(RV3028_ADDRESS);
+    i2c->beginTransmission(RV3028_ADDRESS);
     //set register pointer
-    Wire.write(registerAddress);
-    Wire.write(value);
-    Wire.endTransmission();
+    i2c->write(registerAddress);
+    i2c->write(value);
+    i2c->endTransmission();
 }
 
 void Melopero_RV3028::writeToRegisters(uint8_t startAddress, uint8_t *values, uint8_t length){
-    Wire.beginTransmission(RV3028_ADDRESS);
+    i2c->beginTransmission(RV3028_ADDRESS);
     //set start register address
-    Wire.write(startAddress);
+    i2c->write(startAddress);
 
-    Wire.write(values, length);
+    i2c->write(values, length);
 
-    Wire.endTransmission();
+    i2c->endTransmission();
 }
 
 void Melopero_RV3028::andOrRegister(uint8_t registerAddress, uint8_t andValue, uint8_t orValue){
