@@ -276,15 +276,24 @@ bool Melopero_RV3028::isEEPROMBusy(){
     return (readFromRegister(STATUS_REGISTER_ADDRESS) & 0x80) > 0;
 }
 
+bool Melopero_RV3028::waitforEEPROM()
+{
+	unsigned long timeout = millis() + 500;
+	while ((readFromRegister(STATUS_REGISTER_ADDRESS) & 1 << 7) && millis() < timeout);
+
+	return millis() < timeout;
+}
+
 /* Reads an eeprom register and returns its content.
  * user eeprom address space : [0x00 - 0x2A]
  * configuration eeprom address space : [0x30 - 0x37] */
 uint8_t Melopero_RV3028::readEEPROMRegister(uint8_t registerAddress){
     writeToRegister(EEPROM_ADDRESS_ADDRESS, registerAddress);
-    //while (isEEPROMBusy());
 
-    // read a register -> eeprom data = 0x22
+    // read a register -> eeprom data = 0x00 -> eeprom data = 0x22
+    writeToRegister(EEPROM_COMMAND_ADDRESS, 0x00);
     writeToRegister(EEPROM_COMMAND_ADDRESS, 0x22);
+    if (!waitforEEPROM()) return 0xFF;
     return readFromRegister(EEPROM_DATA_ADDRESS);
 }
 
@@ -294,8 +303,9 @@ uint8_t Melopero_RV3028::readEEPROMRegister(uint8_t registerAddress){
 void Melopero_RV3028::writeEEPROMRegister(uint8_t registerAddress, uint8_t value){
     writeToRegister(EEPROM_ADDRESS_ADDRESS, registerAddress);
     writeToRegister(EEPROM_DATA_ADDRESS, value);
-    //while (isEEPROMBusy());
 
-    // write to a register in eeprom = 0x21
+    // write to a register in eeprom = 0x00 then 0x21
+    writeToRegister(EEPROM_COMMAND_ADDRESS, 0x00);
     writeToRegister(EEPROM_COMMAND_ADDRESS, 0x21);
+    waitforEEPROM();
 }

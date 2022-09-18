@@ -122,6 +122,7 @@ class Melopero_RV3028 {
         // Sets up the device to read/write from/to the eeprom memory. The automatic refresh function has to be disabled.
         void useEEPROM(bool disableRefresh = true);
         bool isEEPROMBusy();
+        bool waitforEEPROM();
         uint8_t readEEPROMRegister(uint8_t registerAddress);
         void writeEEPROMRegister(uint8_t registerAddress, uint8_t value);
 
