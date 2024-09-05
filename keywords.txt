@@ -29,6 +29,7 @@ disablePeriodicTimer	KEYWORD2
 enablePeriodicTimeUpdate    KEYWORD2
 clearInterruptFlags    KEYWORD2
 getUnixTime    KEYWORD2
+setUnixTime    KEYWORD2
 initDevice    KEYWORD2
 
 readFromRegister	KEYWORD2

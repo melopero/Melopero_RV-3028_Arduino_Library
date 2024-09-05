@@ -154,6 +154,11 @@ uint32_t Melopero_RV3028::getUnixTime(){
     return unixTime;
 }
 
+void Melopero_RV3028::setUnixTime(uint32_t secondsSinceEpoch){
+    uint8_t secondsArray[4] = {(uint8_t)secondsSinceEpoch, (uint8_t)(secondsSinceEpoch >> 8), (uint8_t)(secondsSinceEpoch >> 16), (uint8_t)(secondsSinceEpoch >> 24)};
+    writeToRegisters(UNIX_TIME_ADDRESS, secondsArray, 4);
+}
+
 bool Melopero_RV3028::isDateModeForAlarm(){
     return (readFromRegister(CONTROL1_REGISTER_ADDRESS) & DATE_ALARM_MODE_FLAG) > 0;
 }
