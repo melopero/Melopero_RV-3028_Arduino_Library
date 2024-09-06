@@ -78,6 +78,7 @@ class Melopero_RV3028 {
         uint16_t getYear();
 
         uint32_t getUnixTime();
+        void setUnixTime(uint32_t secondsSinceEpoch);
 
         void set24HourMode();
         void set12HourMode();
