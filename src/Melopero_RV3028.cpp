@@ -277,13 +277,6 @@ void Melopero_RV3028::useEEPROM(bool disableRefresh){
         andOrRegister(CONTROL1_REGISTER_ADDRESS, 0xF7, 0);
 }
 
-bool Melopero_RV3028::waitforEEPROM()
-{
-	unsigned long timeout = millis() + 500;
-	while ((readFromRegister(STATUS_REGISTER_ADDRESS) & 1 << 7) && millis() < timeout);
-
-	return millis() < timeout;
-}
 
 bool Melopero_RV3028::isEEPROMBusy(){
     return (readFromRegister(STATUS_REGISTER_ADDRESS) & 0x80) > 0;
